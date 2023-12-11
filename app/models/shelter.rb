@@ -38,11 +38,10 @@ class Shelter < ApplicationRecord
   end
 
   def self.pending_applications
-    # Shelter.joins(pets: :applications).where("applications.application_status ='pending'").select("shelters")
-    Shelter.find_by_sql("SELECT DISTINCT shelters.*
-    FROM shelters
-    INNER JOIN pets ON pets.shelter_id = shelters.id
-    INNER JOIN applications ON applications.pet_id = pets.id
-    WHERE applications.application_status = 'pending'")
+    Shelter.joins(pets: :applications).where("applications.application_status = ?","Pending")    # Shelter.find_by_sql("SELECT DISTINCT shelters.*
+    # FROM shelters
+    # INNER JOIN pets ON pets.shelter_id = shelters.id
+    # INNER JOIN applications ON applications.pet_id = pets.id
+    # WHERE applications.application_status = 'pending'")
   end
 end
