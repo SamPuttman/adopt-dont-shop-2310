@@ -6,10 +6,20 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-@victor_app = Application.create!(applicant_name: "Victor Antonio Sanchez", address: "97 Jaffa Road", city: "Jerusalem", state: "Israel", zip_code: "9103401", description: "Because I'm rich! :)")
-@shelter_1 = Shelter.create(name: "Aurora shelter", city: "Aurora, CO", foster_program: false, rank: 9)
-@pet_1 = @shelter_1.pets.create!(name: "Mr. Pirate", breed: "tuxedo shorthair", age: 5, adoptable: true)
-@pet_2 = @shelter_1.pets.create!(name: "Clawdia", breed: "shorthair", age: 3, adoptable: true)
-@pet_3 = @shelter_1.pets.create!(name: "Ann", breed: "ragdoll", age: 3, adoptable: false)
-@victor_app.pets << @pet_1
-@victor_app.pets << @pet_2
+
+
+victor_app = Application.create!(applicant_name: "Victor Antonio Sanchez", address: "97 Jaffa Road", city: "Jerusalem", state: "Israel", zip_code: "9103401", application_status: "Pending",description: "Because I'm rich! :)")
+sam_app = Application.create!(applicant_name: "Sam Puttman", address: "94 Jaffa Road", city: "Jerusalem", state: "Israel", zip_code: "9103401",application_status: "Pending", description: "Because I'm super rich! :)")
+natalie_app = Application.create!(applicant_name: "Natalie Lan", address: "96 Jaffa Road", city: "Jerusalem", state: "Israel", zip_code: "9103401", description: "Because I'm super deduperdy rich! :)")
+
+shelter_1 = Shelter.create!(name: "Aurora shelter", city: "Aurora, CO", foster_program: false, rank: 3)
+shelter_2 = Shelter.create!(name: "Denver shelter", city: "Denver, CO", foster_program: false, rank: 5)
+shelter_3 = Shelter.create!(name: "Boulder shelter", city: "Boulder, CO", foster_program: false, rank: 9)
+
+pet_1 = shelter_1.pets.create!(name: "Roxy", breed: "labrador", age: 7, adoptable: true)
+pet_2 = shelter_2.pets.create!(name: "Rocky", breed: "dalmation", age: 4, adoptable: true) 
+pet_3 = shelter_3.pets.create!(name: "Brownie", breed: "ewok", age: 12, adoptable: true)
+
+victor_app.pets << pet_1
+sam_app.pets << pet_2
+natalie_app.pets << pet_3
